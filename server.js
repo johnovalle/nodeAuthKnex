@@ -20,10 +20,11 @@ app.use(session({
   saveUninitialized: true,
   cookie: {},
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./config/passport')(passport);
+require('./config/passport');
 
 app.use('/', routes);
 
