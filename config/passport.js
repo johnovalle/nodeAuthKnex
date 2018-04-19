@@ -33,6 +33,25 @@ module.exports = () => {
     .catch(err => err);
   }));
 
+  passport.use('login', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password_digest',
+    passReqToCallback: true,
+  },
+  (req, email, password, done) => {
+    db('login_user').where({email}).first().then(user => {
+      if (!user) {
+        return done(null, false, console.log('user not found'));
+      }
+      
+      if (!validPassword(password, user.password_digest)) {
+        return done(null, false, console.log('password mismatch'));
+      }
+
+      return done(null, user);
+    })
+    .catch(err => err);
+  }));
 }
 
 function generateHash(password) {
