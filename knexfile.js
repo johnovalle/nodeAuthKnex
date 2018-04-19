@@ -5,8 +5,9 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      filename: 'postgres://localhost/nodeauth'
-    }
+      host: 'localhost',
+      database: 'nodeauth',
+    },
   },
 
   // production: {

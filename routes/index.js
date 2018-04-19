@@ -35,7 +35,7 @@ router.get('/logout', (req, res) => {
 
 module.exports = router;
 
-const isLoggedIn = (req, res, next) => {
+function isLoggedIn(req, res, next) {
   console.log('is logged in?', req.isAuthenticated());
   if (req.isAuthenticated()) {
     return next();

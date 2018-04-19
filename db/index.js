@@ -5,3 +5,5 @@ const knex = require('knex')({
     database: 'nodeauth',
   },
 });
+
+module.exports = knex;
